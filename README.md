@@ -22,9 +22,13 @@ In preparation for supervised classification algorithms, we implemented the foll
 8. Since the pdays feature included dummy 999 numerical values, we replaced these 999 values with -1 and also created a new binary feature that indicates whether a customer was contacted prior to this campaign or not
 
 ## Predictive Modeling
+Now that the dataset is all numerical and prepared for modeling, we split it into train/test subsets. It is important to note that our target variable is highly imbalanced which is accounted for when running the models. A test size of 20% is implemented and non boolean/non-binary features are scaled after splitting. 
+First, we ran a baseline model using the most frequent class for the predicted dataset. Given that the target variable is imbalanced, simply measuring accuracry is not sufficient. We included measures of precision and recall score. Ultimately, for this type of busines problem, maximizing the recall score is of highest importance as we wouldnt want to miss potential clients that might have accepted the bank terms. 
+Next, we ran classification models including logistic regression, K nearest neighbors (KNN), decision tree and SVM. Models were run with default settings with the exception of the class weight parameter that was set as balanced. 
 
 ## Model Assessment
 ### Model Evaluation 
+Models were evaluated with respect to their train time, train accuracy, test accuracy and recall. 
 
 ### Model Tuning 
 

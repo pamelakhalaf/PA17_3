@@ -29,7 +29,21 @@ Next, we ran classification models including logistic regression, K nearest neig
 ## Model Assessment
 ### Model Evaluation 
 Models were evaluated with respect to their train time, train accuracy, test accuracy and recall. 
-
+Logistic regression model ran fast and was consistent in performance across train and test sets. Despite the highest recall score across models, it performed poorly when it comes to accuracy vs other models. 
+KNN was fast and performed well across the board but likely overfit on training set. 
+Decision tree was relatively fast but overfit the training data as training accuracy was extremely high and lower test accuracy. Both decision tree and KNN models scored very low on recall. 
+SVM was very slow but performed relatively well across train, test sets  accuracy and recall. 
+ 
 ### Model Tuning 
+Given that we had good starting point with the SVM and logistic regression model when it comes to the recall score, we applied GridSearchCV and tuned these models to further improve upon accuracy. The SVM model turned out to be very computationally costly and we had to limit the number of hyperparameters explored as well as limit the Kernel to liner. Ultimately, while we were able to gradually increase the recall score across the tuned model, the logistic regression model was overall our best classifier. 
 
 ## Findings & Recommendations 
+Further assessing the output of our logistic regression classifier, helps inform not just which clients are most likely to accept the bank term but also features that were most predictive: 
+1. The 3 mo euribor rate - Higher euribor rate (3 mo) decreases odds of client subscribing. This suggests that when interest rates are high, clients are less likely to subscribe
+2. The number of days since client was last contacted - The number of days since last client was contacted has a positive coefficient suggesting that clients that werent contacted recently are more receptive to the campaign now
+3. The employment variation rate - The employement variation rate is negatively correlated with likelihood of subscribing reflecting potential impact of macroeconomic conditions on client decisions
+4. The consumer confidence index - When consumer conficence index rises, likelihood of subscribing increases slightly, suggesting higher confidence can mean more willingness to invest
+ 
+ 
+ 
+ 
